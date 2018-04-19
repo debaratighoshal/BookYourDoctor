@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#faf9f9"
+    android:padding="30dp"
+    android:orientation="vertical"
+    android:backgroundTint="@color/colorPrimary"
+    tools:context="healthcare.dev.debarati.bookyourdoctor.HomeActivity">
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv1"
+        android:text="Enter Your Email ID:"
+        android:textSize="30dp"
+        android:textColor="#050c6c"
+        android:textStyle="bold"/>
+
+    <EditText
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et1"
+        android:textSize="30dp"
+        android:hint="EMAIL ID"
+        android:inputType="textEmailAddress"
+        android:gravity="center"
+        android:textColor="#f2e69a" />
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv2"
+        android:text="Enter Password:"
+        android:textSize="30dp"
+        android:textColor="#050c6c"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:paddingBottom="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et2"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:hint="PASSWORD"
+        android:inputType="textPassword"
+        android:textColor="#ebf27e"
+         />
+    <Button
+        android:padding="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bu1"
+        android:text="Login"/>
+    <Button
+        android:padding="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bu2"
+        android:text="New User ? Sign up NOW"/>
+
+</LinearLayout>
