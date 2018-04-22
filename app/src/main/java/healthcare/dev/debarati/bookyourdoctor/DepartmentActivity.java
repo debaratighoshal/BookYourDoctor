@@ -1,5 +1,6 @@
 package healthcare.dev.debarati.bookyourdoctor;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -38,6 +39,7 @@ import java.util.Calendar;
 
 public class DepartmentActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
+    List<String> depIdList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,10 +71,13 @@ public class DepartmentActivity extends AppCompatActivity implements AdapterView
                             {
                                 Toast.makeText(getApplicationContext(), "Loaded Departments", Toast.LENGTH_LONG).show();
                                 List<String> depList = new ArrayList<String>();
+                                depIdList =  new ArrayList<String>();
                                 depList.add("Select your Department");
+                                depIdList.add("-1");
                                 for(int i=0;i<deparments.getJSONArray("DepartmentDetails").length();i++)
                                 {
                                     depList.add(deparments.getJSONArray("DepartmentDetails").getJSONObject(i).get("departmentname").toString());
+                                    depIdList.add(deparments.getJSONArray("DepartmentDetails").getJSONObject(i).get("departmentid").toString());
                                 }
                                 String[] depArray = new String[depList.size()];
                                 depList.toArray(depArray );
@@ -115,6 +120,7 @@ public class DepartmentActivity extends AppCompatActivity implements AdapterView
                                int pos, long id) {
         if(!(parent.getItemAtPosition(pos).toString().equals("Select your Department"))) {
             Toast.makeText(getApplicationContext(), new String(parent.getItemAtPosition(pos).toString()), Toast.LENGTH_LONG).show();
+            final String depIdSelected = depIdList.get(pos);
             final DatePicker bookingDate= (DatePicker) findViewById(R.id.datePicker1);
             bookingDate.setVisibility(View.VISIBLE);
             final Calendar c = Calendar.getInstance();
@@ -122,8 +128,14 @@ public class DepartmentActivity extends AppCompatActivity implements AdapterView
 
                 @Override
                 public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    Toast.makeText(getApplicationContext(), new String("Date Changed : " +view.toString()), Toast.LENGTH_LONG).show();
-
+                    Toast.makeText(getApplicationContext(), new String("Date Selected is : " +view.getDayOfMonth()+"/"+view.getMonth()+"/"+view.getYear()), Toast.LENGTH_LONG).show();
+                    Intent doctorSelectIntent = new Intent(DepartmentActivity.this,DoctorSelectionActivity.class);
+                    Bundle depBundle = new Bundle();
+                    depBundle.putString("depIdSelected",depIdSelected);
+                    depBundle.putString("dateSelected",view.getDayOfMonth()+"/"+view.getMonth()+"/"+view.getYear());
+                    depBundle.putInt("userid",getIntent().getExtras().getInt("userid"));
+                    doctorSelectIntent.putExtras(depBundle);
+                    startActivity(doctorSelectIntent);
 
                 }
             });

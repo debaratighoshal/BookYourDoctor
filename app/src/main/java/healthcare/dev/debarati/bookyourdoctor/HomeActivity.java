@@ -85,6 +85,9 @@ public class HomeActivity extends AppCompatActivity {
                                             if(userLoginResponse.get("Sucess").equals("1"))
                                             {
                                                 Toast.makeText(getApplicationContext(), "Login success", Toast.LENGTH_LONG).show();
+                                                Bundle user_id_bundle = new Bundle();
+                                                user_id_bundle.putInt("userid",userLoginResponse.getJSONObject("UserDetails").getInt("userid"));
+                                                depIntent.putExtras(user_id_bundle);
                                                 startActivity(depIntent);
                                             }
                                             else

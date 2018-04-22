@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Book Your Doctor</string>
 
-        <string-array name="departments_array">
-            <item>Cardiology</item>
-            <item>Opthamology</item>
+    <string-array name="departments_array">
+        <item>Cardiology</item>
+        <item>Opthamology</item>
 
-        </string-array>
+    </string-array>
 
 </resources>
